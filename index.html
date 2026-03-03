@@ -9,9 +9,10 @@
         :root {
             --bg-void: #000000;
             --text-main: #ffffff;
-            --accent-gold: #D4AF37;
+            --accent-gold: #FFD700; /* Upgraded to a brighter, punchier gold */
             --grid-line: rgba(255, 255, 255, 0.1);
             --border-color: rgba(255, 255, 255, 0.2);
+            --border-metrics: rgba(255, 255, 255, 0.08); /* Dedicated ultra-thin outline for stats */
             
             --font-display: 'Arial Black', 'Helvetica Neue', sans-serif;
             --font-mono: 'Courier New', Courier, monospace;
@@ -94,7 +95,7 @@
             height: 100vh;
             z-index: -1;
             pointer-events: none;
-            opacity: 0.6; 
+            opacity: 0.9; /* Increased opacity so gold pops through the black */
         }
 
         /* --- HUD NAVIGATION --- */
@@ -124,7 +125,7 @@
             justify-content: flex-end;
             padding: 40px 40px 100px 40px;
             position: relative;
-            background: radial-gradient(circle at 70% 30%, rgba(212, 175, 55, 0.05) 0%, transparent 60%); 
+            background: radial-gradient(circle at 70% 30%, rgba(255, 215, 0, 0.08) 0%, transparent 60%); 
         }
 
         .hero-title {
@@ -172,12 +173,12 @@
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-metrics); /* Applied thinner outline */
         }
 
         .stat-card {
             padding: 50px 30px;
-            border-right: 1px solid var(--border-color);
+            border-right: 1px solid var(--border-metrics); /* Applied thinner outline */
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -187,11 +188,11 @@
             overflow: hidden;
         }
 
-        .stat-card:hover {
+       .stat-card:hover {
             background: var(--text-main); 
             color: var(--bg-void); 
-            transform: translateY(-10px); 
-            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.15); 
+            /* Removed the translateY transform so it stays perfectly inside the grid lines */
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.25); /* Centered and slightly brightened the glow */
             border-color: transparent;
         }
 
@@ -233,7 +234,16 @@
 
         .project-info { max-width: 60%; }
         .project-info h2 { font-size: 3.5rem; text-transform: uppercase; margin-bottom: 10px; }
-        .project-desc { font-family: var(--font-mono); color: #888; font-size: 0.9rem; line-height: 1.5; margin-bottom: 20px;}
+        
+        .project-desc { 
+            font-family: var(--font-mono); 
+            color: #888; 
+            font-size: 0.9rem; 
+            line-height: 1.5; 
+            margin-bottom: 20px;
+            text-wrap: pretty; /* Prevents typographic widows automatically */
+        }
+        
         .project-id { font-family: var(--font-mono); color: var(--accent-gold); display: block; margin-bottom: 10px; } 
 
         /* --- PROJECT LINKS --- */
@@ -298,9 +308,9 @@
 
         @media (max-width: 1000px) {
             .stats-grid { grid-template-columns: repeat(2, 1fr); }
-            .stat-card { border-bottom: 1px solid var(--border-color); }
+            .stat-card { border-bottom: 1px solid var(--border-metrics); }
             .stat-card:nth-child(even) { border-right: none; }
-            .stat-card:nth-child(odd) { border-right: 1px solid var(--border-color); }
+            .stat-card:nth-child(odd) { border-right: 1px solid var(--border-metrics); }
         }
 
         @media (max-width: 768px) {
@@ -535,7 +545,8 @@ Unlike traditional machine learning models (like Naive Bayes or SVM) that proces
                 const radiusLimit = Math.min(width, height) * 0.45;
                 const alpha = Math.max(0.05, (z2 + radiusLimit) / (radiusLimit * 2)); 
                 
-                ctx.fillStyle = `rgba(212, 175, 55, ${alpha})`; 
+                /* Updated the globe particles to match the brighter gold hex #FFD700 */
+                ctx.fillStyle = `rgba(255, 215, 0, ${alpha})`; 
                 ctx.beginPath();
                 ctx.arc(xProjected + xOffset, yProjected, 2.5 * scale, 0, Math.PI * 2);
                 ctx.fill();
