@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SABBIR SAOWN // DATA ANALYST</title>
     <style>
-        /* --- STUNNING MINIMALIST GOLD PALETTE --- */
+    
         :root {
             --bg-void: #000000;
             --text-main: #ffffff;
@@ -66,7 +66,7 @@
             transition: transform 0.1s ease-out; 
         }
 
-        /* --- 3D MOVING GRID --- */
+        /* --- 3D MOVING Globe --- */
         .grid-bg {
             position: fixed;
             top: -50%; left: -50%;
@@ -86,7 +86,7 @@
             100% { transform: perspective(600px) rotateX(60deg) translateY(60px); }
         }
 
-        /* --- TECHY PARTICLE GLOBE CANVAS --- */
+        /* ---  PARTICLE GLOBE CANVAS --- */
         #globe-canvas {
             position: fixed;
             top: 0;
@@ -191,8 +191,7 @@
        .stat-card:hover {
             background: var(--text-main); 
             color: var(--bg-void); 
-            /* Removed the translateY transform so it stays perfectly inside the grid lines */
-            box-shadow: 0 0 25px rgba(255, 255, 255, 0.25); /* Centered and slightly brightened the glow */
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.25); 
             border-color: transparent;
         }
 
@@ -241,7 +240,7 @@
             font-size: 0.9rem; 
             line-height: 1.5; 
             margin-bottom: 20px;
-            text-wrap: pretty; /* Prevents typographic widows automatically */
+            text-wrap: pretty;
         }
         
         .project-id { font-family: var(--font-mono); color: var(--accent-gold); display: block; margin-bottom: 10px; } 
@@ -297,9 +296,7 @@
         .socials a { display: block; text-align: right; margin-bottom: 10px; text-decoration: none; color: white; transition: color 0.3s;}
         .socials a:hover { color: var(--accent-gold); }
 
-        /* =========================================
-           MOBILE OPTIMIZATION
-           ========================================= */
+        /* MOBILE OPTIMIZATION */
         
         @media (hover: none) and (pointer: coarse) {
             * { cursor: auto !important; }
